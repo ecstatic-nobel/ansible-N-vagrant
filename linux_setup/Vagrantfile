@@ -1,0 +1,52 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.7.4"
+
+Vagrant.configure(2) do |config|
+
+    config.vm.define "VER1-ANSIBLE" do |ver1|
+
+        ver1.vm.provider "virtualbox" do |vb|
+            vb.name = "VER1-ANSIBLE"
+            vb.gui = false
+            vb.cpus = 1
+            vb.memory = "512"
+        end
+
+        ver1.vm.box = "bento/centos-6.7"
+        ver1.vm.hostname = "VER1-ANSIBLE"
+        ver1.vm.box_check_update = false
+
+        ver1.vm.network "private_network", ip: "172.25.25.2"
+
+        ver1.vm.synced_folder "../../ansible-N-vagrant", "/vagrant"
+
+        ver1.vm.provision "shell", privileged: true, path: "../ver1_setup.sh"
+        ver1.vm.provision "shell", privileged: true, path: "../ssh_nopasswd.sh"
+
+    end
+
+    config.vm.define "VER2-ANSIBLE" do |ver2|
+
+        ver2.vm.provider "virtualbox" do |vb|
+            vb.name = "VER2-ANSIBLE"
+            vb.gui = false
+            vb.cpus = 1
+            vb.memory = "512"
+        end
+
+        ver2.vm.box = "bento/ubuntu-14.04"
+        ver2.vm.hostname = "VER2-ANSIBLE"
+        ver2.vm.box_check_update = false
+
+        ver2.vm.network "private_network", ip: "172.25.25.3"
+
+        ver2.vm.synced_folder  "../../ansible-N-vagrant", "/vagrant"
+
+        ver2.vm.provision "shell", privileged: true, path: "../ver2_setup.sh"
+        ver2.vm.provision "shell", privileged: true, path: "../ssh_nopasswd.sh"
+
+    end
+
+end

@@ -1,0 +1,9 @@
+[remote]
+172.25.25.2 ansible_ssh_pass=ansible
+172.25.25.3 ansible_ssh_pass=ansible
+
+[debian]
+172.25.25.3 ansible_ssh_pass=ansible
+
+[redhat]
+172.25.25.2 ansible_ssh_pass=ansible

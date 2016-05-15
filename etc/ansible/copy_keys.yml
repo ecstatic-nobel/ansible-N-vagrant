@@ -1,0 +1,27 @@
+---
+- hosts: remote
+  become: true
+  
+  tasks:
+    - name: Copy SSH Public Key
+      authorized_key:
+        user: ansible
+        key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+
+    - name: Disable Password Authentication
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication yes$"
+        line: "PasswordAuthentication no"
+        
+    - name: Restart SSHD service
+      service:
+        name: sshd
+        state: restarted
+      when: ansible_os_family == 'RedHat'
+      
+    - name: Restart SSH service
+      service:
+        name: ssh
+        state: restarted
+      when: ansible_os_family == 'Debian'
