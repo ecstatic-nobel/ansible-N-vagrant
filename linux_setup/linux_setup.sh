@@ -65,6 +65,8 @@ else
     ln -sr ./etc/ansible/hosts1 /etc/ansible/ansible-N-vagrant/hosts
 fi
 
+sed -i 's/ ansible_ssh_pass=ansible//' /etc/ansible/ansible-N-vagrant/hosts
+
 echo -e "\x1B[01;92m Changing directory to ./linux_setup \x1B[0m"
 cd ./linux_setup
 
