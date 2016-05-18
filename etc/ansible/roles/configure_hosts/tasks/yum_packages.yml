@@ -1,0 +1,11 @@
+---
+- name: Install epel-release, libselinux-python, pip, and vim
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - epel-release
+    - libselinux-python
+    - python-pip
+    - vim

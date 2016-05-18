@@ -1,0 +1,6 @@
+---
+- hosts: all
+  ansible_ssh_user: vagrant
+  become: True
+  roles:
+    - configure_hosts

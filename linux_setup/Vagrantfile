@@ -22,9 +22,6 @@ Vagrant.configure(2) do |config|
 
         ver1.vm.synced_folder "../../ansible-N-vagrant", "/vagrant"
 
-        ver1.vm.provision "shell", privileged: true, path: "../ver1_setup.sh"
-        ver1.vm.provision "shell", privileged: true, path: "../ssh_nopasswd.sh"
-
     end
 
     config.vm.define "VER2-ANSIBLE" do |ver2|
@@ -43,9 +40,6 @@ Vagrant.configure(2) do |config|
         ver2.vm.network "private_network", ip: "172.25.25.3"
 
         ver2.vm.synced_folder  "../../ansible-N-vagrant", "/vagrant"
-
-        ver2.vm.provision "shell", privileged: true, path: "../ver2_setup.sh"
-        ver2.vm.provision "shell", privileged: true, path: "../ssh_nopasswd.sh"
 
     end
 

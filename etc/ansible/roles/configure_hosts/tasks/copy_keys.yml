@@ -1,7 +1,7 @@
 ---
 - hosts: remote
   become: true
-  
+
   tasks:
     - name: Copy SSH Public Key
       authorized_key:
@@ -13,13 +13,13 @@
         dest: /etc/ssh/sshd_config
         regexp: "^PasswordAuthentication yes$"
         line: "PasswordAuthentication no"
-        
+
     - name: Restart SSHD service
       service:
         name: sshd
         state: restarted
       when: ansible_os_family == 'RedHat'
-      
+
     - name: Restart SSH service
       service:
         name: ssh
