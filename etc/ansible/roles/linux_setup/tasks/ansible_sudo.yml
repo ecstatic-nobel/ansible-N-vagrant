@@ -1,0 +1,9 @@
+---
+- name: Give Ansible sudo privileges
+  lineinfile:
+    create: yes
+    dest: /etc/sudoers.d/ansible
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "ansible    ALL=(ALL)    NOPASSWD:ALL" # Workaround YAML gotcha

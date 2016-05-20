@@ -1,0 +1,14 @@
+---
+- name: Update Cache (Debian)
+  apt:
+    update_cache: yes
+
+- name: Install pip (Debian)
+  apt:
+    name: python-pip
+    state: present
+
+- name: Install vim (Debian)
+  apt:
+    name: vim
+    state: present

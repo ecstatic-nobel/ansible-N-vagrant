@@ -1,7 +1,0 @@
----
-- name: Save IPTables (RedHat)
-  shell: "{{ item }}"
-  with_items:
-    - "chkconfig iptables on"
-    - "service iptables save"
-    - "service ip6tables save"

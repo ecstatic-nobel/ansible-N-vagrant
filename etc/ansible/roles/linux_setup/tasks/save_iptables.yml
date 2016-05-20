@@ -1,0 +1,40 @@
+---
+- name: Save IPTables (RedHat)
+  shell: "{{ item }}"
+  with_items:
+    - "service iptables save"
+    - "service ip6tables save"
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - redhat
+
+- name: Pre-configure commands to save IPTables
+  shell: "{{ item }}"
+  with_items:
+    - "echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections"
+    - "echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections"
+  when: ansible_os_family == 'Debian'
+  tags:
+    - debian
+
+- block:
+    - name: Install IPTables-Persistent
+      apt:
+        name: iptables-persistent
+        state: latest
+        update_cache: no
+
+    - name: Maintenance (Debian)
+      shell: apt-get autoremove -y && apt-get autoclean
+  when: ansible_os_family == 'Debian'
+  tags:
+    - debian
+
+- name: Enable IPTables
+  service:
+    name: "{{ item.name }}"
+    enabled: yes
+    state: started
+  when: ansible_os_family == "{{ item.osfamily }}"
+  with_items:
+    - { name: 'iptables', osfamily: 'RedHat' }

@@ -1,0 +1,11 @@
+---
+- name: Add command to clear history
+  lineinfile:
+    dest: "{{ item.dest }}"
+    line: "{{ item.line }}"
+    state: present
+  when: ansible_os_family == "{{ item.osfamily }}"
+  with_items:
+    - { dest: '/etc/bashrc', line: "alias redbean='history -c && history -w && exit'", osfamily: 'RedHat' }
+    - { dest: '/etc/bash.bashrc', line: "alias redbean='history -c && history -w && exit'", osfamily: 'Debian' }
+  notify: Reboot

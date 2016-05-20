@@ -1,0 +1,6 @@
+---
+- name: Require user to be in root group to use su
+  lineinfile:
+    dest: /etc/pam.d/su
+    line: 'auth       sufficient pam_rootok.so'
+    regexp: auth.*sufficient.*pam_rootok.so

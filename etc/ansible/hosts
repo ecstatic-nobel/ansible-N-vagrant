@@ -1,9 +1,13 @@
+#[local]
+#172.25.25.4  ansible_ssh_pass=vagrant
+
 [remote]
-172.25.25.2 ansible_ssh_pass=ansible
-172.25.25.3 ansible_ssh_pass=ansible
+172.25.25.2  ansible_ssh_pass=vagrant
+172.25.25.3  ansible_ssh_pass=vagrant
 
 [debian]
-172.25.25.3 ansible_ssh_pass=ansible
+172.25.25.3  ansible_ssh_pass=vagrant
+#172.25.25.4  ansible_ssh_pass=vagrant
 
 [redhat]
-172.25.25.2 ansible_ssh_pass=ansible
+172.25.25.2  ansible_ssh_pass=vagrant

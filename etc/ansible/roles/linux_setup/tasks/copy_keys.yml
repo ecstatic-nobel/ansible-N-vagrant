@@ -1,0 +1,10 @@
+---
+- name: Get home directory
+  local_action: shell echo $HOME
+  register: home
+  become: False
+
+- name: Copy SSH Public Key
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', '{{ home.stdout_lines[0] }}/leunammejii/ansible-N-vagrant/home/.ssh/id_rsa.pub') }}"

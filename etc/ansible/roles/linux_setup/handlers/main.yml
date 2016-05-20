@@ -1,0 +1,3 @@
+---
+- name: Reboot
+  shell: reboot now

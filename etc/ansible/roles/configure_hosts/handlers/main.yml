@@ -1,4 +1,0 @@
----
-- name: Repo Maintenance
-  apt:
-    autoremove: yes

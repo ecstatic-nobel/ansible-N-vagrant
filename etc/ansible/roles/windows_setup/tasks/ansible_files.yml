@@ -1,0 +1,9 @@
+---
+- name: Copy ansible.cfg and hosts file
+  copy:
+    dest: "{{ item.dest }}"
+    src: "{{ item.src }}"
+    force: yes
+  with_items:
+    - { dest: /etc/ansible/ansible.cfg, src: ansible.cfg }
+    - { dest: /etc/ansible/hosts, src: ansible_hosts }

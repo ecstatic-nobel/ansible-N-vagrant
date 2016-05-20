@@ -1,0 +1,3 @@
+---
+- name: Create SSH key pair
+  shell: ssh-keygen -t rsa -b 4096 -f /home/ansible/.ssh/id_rsa -P ''
