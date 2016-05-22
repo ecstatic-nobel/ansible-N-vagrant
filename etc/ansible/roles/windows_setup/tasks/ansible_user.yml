@@ -1,0 +1,40 @@
+---
+- name: Create the 'ansible' user and add to 'root' group
+  user:
+    comment: 'Ansible User'
+    createhome: yes
+    home: /home/ansible
+    groups: root
+    name: ansible
+    shell: /bin/bash
+    skeleton: /etc/skel
+    state: present
+    uid: 1001
+
+- name: Set ansible user password
+  shell: echo "ansible:ansible" | chpasswd
+
+- name: Create the '/home/ansible/.ssh' directory
+  file:
+    path: /home/ansible/.ssh
+    state: directory
+
+- name: Copy the .vimrc file
+  copy:
+    src: .vimrc
+    dest: /home/ansible/.vimrc
+
+- name: Change permissions and ownership files and directories in /home/ansible
+  shell: "{{ item }}"
+  with_items:
+    - find /home/ansible/ -type f -exec chmod 600 {} \;
+    - find /home/ansible/ -type d -exec chmod 700 {} \;
+    - chown -R ansible:ansible /home/ansible/
+
+- name: Change permissions and ownership files and directories in /etc/ansible
+  shell: "{{ item }}"
+  when: "{{ 'local' in group_names }}"
+  with_items:
+    - find /etc/ansible/ -type f -exec chmod 600 {} \;
+    - find /etc/ansible/ -type d -exec chmod 700 {} \;
+    - chown -R ansible:ansible /etc/ansible/

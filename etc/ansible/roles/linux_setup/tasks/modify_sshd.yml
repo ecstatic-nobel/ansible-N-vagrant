@@ -1,0 +1,15 @@
+---
+- name: Copy sshd_config file
+  copy:
+    dest: /etc/ssh/sshd_config
+    src: sshd_config
+
+- name: Enable SSH service
+  service:
+    name: "{{ item.name }}"
+    enabled: yes
+    state: started
+  when: ansible_os_family == "{{ item.osfamily }}"
+  with_items:
+    - { name: 'sshd', osfamily: 'RedHat' }
+    - { name: 'ssh', osfamily: 'Debian' }

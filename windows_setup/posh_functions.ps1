@@ -1,3 +1,7 @@
+# Functions used to manage VMs
+# Execute the following command to load functions:
+# echo ". $HOME/leunammejii/ansible-N-vagrant/linux_setup/bash_functions.sh" >> $profile
+
 #function vem1 {
 #    param (
 #    	[Parameter(Mandatory=$true)][string]$port
@@ -63,7 +67,7 @@ function start-vbvms {
     param (
 	[Parameter(Mandatory=$true)][string]$vmname
     )
-	
+
     vboxmanage startvm "VEM1-$vmname" --type headless
     vboxmanage startvm "VER1-$vmname" --type headless
     vboxmanage startvm "VER2-$vmname" --type headless
@@ -74,7 +78,7 @@ function stop-vbvms {
     param (
 	[Parameter(Mandatory=$true)][string]$vmname
     )
-	
+
     vboxmanage controlvm "VEM1-$vmname" poweroff
     vboxmanage controlvm "VER1-$vmname" poweroff
     vboxmanage controlvm "VER2-$vmname" poweroff

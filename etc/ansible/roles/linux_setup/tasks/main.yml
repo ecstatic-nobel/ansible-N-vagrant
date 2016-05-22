@@ -1,0 +1,24 @@
+---
+- include: yum_packs.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: apt_packs.yml
+  when: ansible_os_family == 'Debian'
+
+- include: ansible_user.yml
+
+- include: copy_keys.yml
+
+- include: ansible_sudo.yml
+
+- include: modify_su.yml
+
+- include: modify_sshd.yml
+
+- include: modify_iptables.yml
+
+- include: save_iptables.yml
+
+- include: copy_hosts.yml
+
+- include: global_alias.yml

@@ -1,0 +1,16 @@
+---
+- name: Copy hosts file
+  copy:
+    src: hosts
+    dest: /etc/hosts
+
+- name: Add loopback address to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1    {{ item }}  localhost"
+    state: present
+  when: ansible_hostname == "{{ item }}"
+  with_items:
+    - VER1-ANSIBLE
+    - VER2-ANSIBLE
+    - VEM1-ANSIBLE

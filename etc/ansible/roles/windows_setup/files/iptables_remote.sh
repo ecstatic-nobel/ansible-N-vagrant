@@ -14,10 +14,7 @@ iptables -P INPUT DROP
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD DROP
 
-iptables -A INPUT -s 0/0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
-
-iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-
-iptables -A INPUT -s 0/0 -p tcp --syn --dport 22 -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -s 172.25.25.4 -j ACCEPT
+iptables -A INPUT -p tcp --syn --dport 22 -s 172.25.25.4 -j ACCEPT

@@ -15,9 +15,7 @@ iptables -P OUTPUT ACCEPT
 iptables -P FORWARD DROP
 
 iptables -A INPUT -s 0/0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-
 iptables -A INPUT -i lo -j ACCEPT
-
 iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
 iptables -N INITIAL_SSH

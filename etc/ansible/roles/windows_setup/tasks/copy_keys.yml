@@ -1,0 +1,12 @@
+---
+- name: Copy SSH Public Key
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+
+- name: Change permissions and ownership files and directories in /home/ansible
+  shell: "{{ item }}"
+  with_items:
+    - find /home/ansible/ -type f -exec chmod 600 {} \;
+    - find /home/ansible/ -type d -exec chmod 700 {} \;
+    - chown -R ansible:ansible /home/ansible/

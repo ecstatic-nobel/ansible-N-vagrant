@@ -63,7 +63,8 @@ git init
 git pull https://github.com/leunammejii/ansible-N-vagrant.git
 cd windows_setup  
 vagrant up    
-```
+```  
+**Note: This, of course, also works if your host machine is Linux.**  
 Once the build is complete, login to ```172.25.25.4``` using puTTY as ```ansible```  
 with the password ```ansible```. You can also execute the following command  
 directly from PowerShell:
@@ -76,7 +77,7 @@ Run the following command to test the setup:
 ansible all -m ping
 ```  
 
-#### Login to the console via VirtualBox (Windows Only)  
+#### Login to the console via VirtualBox  
 Open VirtualBox as administrator/sudo and login to ```VEM1-ANSIBLE``` as  
 ```ansible``` with the password ```ansible```. Then, run the following command  
 to test the setup:  
@@ -92,13 +93,13 @@ console of the remote machines.
 You can now destroy and rebuild the virtual machines with the following commands:  
 
 ```bash  
-cd ~/leunammejii/ansible-N-vagrant/linux_setup  
+cd $HOME/leunammejii/ansible-N-vagrant/linux_setup  
 vagrant destroy -f  
 ```  
 
 To remove the project completely, run the following commands:  
 ```bash  
-cd ~/leunammejii/ansible-N-vagrant/linux_setup  
+cd $HOME/leunammejii/ansible-N-vagrant/linux_setup  
 vagrant destroy -f  
 cd $HOME  
 sudo rm -r ./leunammejii/ansible-N-vagrant /etc/ansible/ansible-N-vagrant  
