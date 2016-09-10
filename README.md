@@ -56,15 +56,8 @@ ansible-playbook PLAYBOOK [ OPTIONS [ARGS] ]
 #### Windows Setup  
 Open PowerShell (or Command Prompt) and run the following commands:  
 ```powershell  
-cd $HOME
-mkdir -p leunammejii\ansible-N-vagrant
-cd leunammejii\ansible-N-vagrant
-git init
-git pull https://github.com/leunammejii/ansible-N-vagrant.git
-cd windows_setup  
-vagrant up    
+iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/leunammejii/ansible-N-vagrant/master/windows_setup/windows_setup.ps1")  
 ```  
-**Note: This, of course, also works if your host machine is Linux.**  
 Once the build is complete, login to ```172.25.25.4``` using puTTY as ```ansible```  
 with the password ```ansible```. You can also execute the following command  
 directly from PowerShell:
