@@ -1,10 +1,6 @@
 # [ansible-N-vagrant]  
 ##### Quickly stand up a small Ansible development environment using Vagrant.  
 
-### "Containers are not VMs!!!"  
-Yeah, yeah, yeah. We all know that by now. So this project is for the "by the  
-book" techies who refuse to SSH into a container.  
-
 #### Description  
 This environment is equipped with 2-3 virtual machines built with Vagrant  
 'bento' boxes.  
