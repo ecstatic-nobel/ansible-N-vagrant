@@ -4,15 +4,13 @@ set -e
 
 echo -e "\x1B[01;92m Changing directory to home \x1B[0m"
 cd $HOME
-echo -e "\x1B[01;92m Creating the ./leunammejii/ansible-N-vagrant directories \x1B[0m"
-mkdir -p ./leunammejii/ansible-N-vagrant
-echo -e "\x1B[01;92m Changing directory to ./leunammejii/ansible-N-vagrant \x1B[0m"
-cd ./leunammejii/ansible-N-vagrant
+echo -e "\x1B[01;92m Creating the ./leunammejii/ directory \x1B[0m"
+mkdir ./leunammejii/
+echo -e "\x1B[01;92m Changing directory to ./leunammejii/ \x1B[0m"
+cd ./leunammejii/
 
-echo -e "\x1B[01;92m Initializing git repository \x1B[0m"
-git init
-echo -e "\x1B[01;92m Pulling down the ansible-N-vagrant project \x1B[0m"
-git pull https://github.com/leunammejii/ansible-N-vagrant.git
+echo -e "\x1B[01;92m Cloning the ansible-N-vagrant project \x1B[0m"
+git clone https://github.com/leunammejii/ansible-N-vagrant.git
 echo -e "\x1B[01;92m Making iptables_remote.sh an executable \x1B[0m"
 sudo chmod u+x ./etc/ansible/roles/linux_setup/files/iptables_remote.sh
 
