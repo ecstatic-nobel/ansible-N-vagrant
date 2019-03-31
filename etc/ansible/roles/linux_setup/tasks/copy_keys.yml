@@ -7,4 +7,4 @@
 - name: Copy SSH Public Key
   authorized_key:
     user: ansible
-    key: "{{ lookup('file', '{{ home.stdout_lines[0] }}/leunammejii/ansible-N-vagrant/home/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', '{{ home.stdout_lines[0] }}/ecstatic-nobel/ansible-N-vagrant/home/.ssh/id_rsa.pub') }}"
