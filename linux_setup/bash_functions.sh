@@ -2,7 +2,7 @@
 
 # Functions used to manage VMs
 # Execute the following command to load functions:
-# echo ". $HOME/leunammejii/ansible-N-vagrant/linux_setup/bash_functions.sh" >> $HOME/.bashrc
+# echo ". $HOME/ecstatic-nobel/ansible-N-vagrant/linux_setup/bash_functions.sh" >> $HOME/.bashrc
 
 function start-vbvm {
     vboxmanage startvm $1 --type headless
