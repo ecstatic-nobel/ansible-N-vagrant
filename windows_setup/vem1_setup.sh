@@ -18,7 +18,7 @@ cp -r /vagrant/etc/ansible/* /etc/ansible
 echo -e "\x1B[01;92m Updating Ansible hosts file path \x1B[0m"
 sed -i 's/^inventory.*=.*\/etc\/ansible\/ansible-N-vagrant\/hosts$/inventory      = \/etc\/ansible\/hosts/g' /etc/ansible/ansible.cfg
 echo -e "\x1B[01;92m Updating private key path \x1B[0m"
-sed -i 's/\$HOME\/leunammejii\/ansible-N-vagrant\/home\/.ssh\/id_rsa/\$HOME\/.ssh\/id_rsa/g' /etc/ansible/ansible.cfg
+sed -i 's/\$HOME\/ecstatic-nobel\/ansible-N-vagrant\/home\/.ssh\/id_rsa/\$HOME\/.ssh\/id_rsa/g' /etc/ansible/ansible.cfg
 echo -e "\x1B[01;92m Adding new hosts to the Ansible hosts file \x1B[0m"
 sed -i 's/^#//g' /etc/ansible/hosts
 
